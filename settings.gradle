@@ -1,0 +1,3 @@
+rootProject.name = 'shit0u-utils'
+include 'config'
+

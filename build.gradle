@@ -1,0 +1,37 @@
+group 'shit0u-utils'
+version '1.0-SNAPSHOT'
+
+allprojects {
+    apply plugin: 'maven'
+    apply plugin: 'idea'
+
+    tasks.withType(JavaCompile) {
+        sourceCompatibility = 1.7
+        targetCompatibility = 1.7
+        options.encoding = 'utf-8'
+    }
+}
+
+idea.project {
+    jdkName = '1.7'
+    languageLevel = '1.7'
+}
+
+idea {
+    project {
+        ipr.withXml { xmlFile ->
+            // setup Git root
+            xmlFile.asNode().component.find { it.@name == 'VcsDirectoryMappings' }.replaceNode {
+                component(name: 'VcsDirectoryMappings') {
+                    mapping(directory: "", vcs: "")
+                    mapping(directory: "\$PROJECT_DIR\$", vcs: 'Git')
+                }
+            }
+        }
+    }
+}
+subprojects {
+    repositories {
+        mavenCentral()
+    }
+}
