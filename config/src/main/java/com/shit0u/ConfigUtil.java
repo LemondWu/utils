@@ -1,7 +1,6 @@
 package com.shit0u;
 
 /**
- * Created in Intellij IDEA 13 Ultimate
  * User: shit0u
  * Date: 16/3/15
  * Time: 15:41
